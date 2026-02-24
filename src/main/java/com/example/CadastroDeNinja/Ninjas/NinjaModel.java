@@ -17,11 +17,21 @@ public class NinjaModel {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
     private Long id;
+
+    @Column(name = "nome_ninja")
     private String nome;
-    @Column(unique = true)
+
+    @Column(unique = true, name = "email")
     private String email;
+
+    @Column(name = "img_url")
+    private String imgUrl;
+
+    @Column(name = "idade")
     private int idade;
+
     @ManyToOne
     @JoinColumn(name = "missoes_id") //Foreign Key (Chave Estrangeira)
     private MissoesModel missoes;
