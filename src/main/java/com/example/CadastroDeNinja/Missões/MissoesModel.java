@@ -17,8 +17,11 @@ public class MissoesModel {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
     private String name;
+
     private char dificuldade;
+
     @OneToMany(mappedBy = "missoes")
     private List<NinjaModel> ninjas;
 
