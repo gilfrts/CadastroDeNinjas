@@ -20,7 +20,7 @@ public class NinjaModel {
     @Column(name = "id")
     private Long id;
 
-    @Column(name = "nome_ninja")
+    @Column(name = "nome")
     private String nome;
 
     @Column(unique = true, name = "email")
