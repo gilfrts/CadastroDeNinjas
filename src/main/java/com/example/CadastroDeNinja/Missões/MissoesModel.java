@@ -21,7 +21,7 @@ public class MissoesModel {
 
     private String nome;
 
-    private char dificuldade;
+    private String dificuldade;
 
     @OneToMany(mappedBy = "missoes")
     @JsonIgnore
