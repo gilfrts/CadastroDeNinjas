@@ -3,6 +3,7 @@ package com.example.CadastroDeNinja.Ninjas;
 import com.example.CadastroDeNinja.CadastroDeNinjaApplication;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -34,9 +35,9 @@ public class NinjaController {
     }
 
     // Alterar dados dos ninjas (UPDATE)
-    @PutMapping("/alterarId")
-    public String alterarNinjaPorId(){
-        return "Alterar ninja por ID";
+    @PutMapping("/atualizar/{id}")
+    public NinjaModel alterarNinjaPorId(@PathVariable Long id, @RequestBody NinjaModel ninjaAtualizado){
+        return ninjaService.atualizarNinja(id, ninjaAtualizado);
     }
     // Deletar ninjas (DELETE)
     @DeleteMapping("/deletar/{id}")
