@@ -1,0 +1,221 @@
+/* ===============================
+   TEMA DARK - ESTILO GITHUB
+================================= */
+
+:root {
+    --bg-primary: #0d1117;
+    --bg-secondary: #161b22;
+    --border-color: #30363d;
+    --text-primary: #c9d1d9;
+    --text-muted: #8b949e;
+    --green: #238636;
+    --green-hover: #2ea043;
+    --danger: #da3633;
+    --warning: #d29922;
+}
+
+/* ====== RESET BÁSICO ====== */
+
+* {
+    box-sizing: border-box;
+}
+
+/* ====== BODY ====== */
+
+body {
+    margin: 0;
+    padding: 40px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+/* ===============================
+   BOTÕES (CORRIGIDO)
+================================= */
+
+a, button {
+    display: inline-flex;          /* impede sobreposição */
+    align-items: center;
+    justify-content: center;
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    border: 1px solid var(--border-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    cursor: pointer;
+    transition: 0.2s ease;
+    width: auto;                   /* REMOVE width 100% */
+    white-space: nowrap;           /* evita quebra feia */
+    margin: 4px;                   /* espaçamento entre botões */
+}
+
+a:hover, button:hover {
+    background-color: #21262d;
+    border-color: var(--text-muted);
+}
+
+/* Botões específicos */
+
+.btn-primary {
+    background-color: var(--green);
+    border: none;
+    color: white;
+}
+
+.btn-primary:hover {
+    background-color: var(--green-hover);
+}
+
+.btn-danger {
+    background-color: var(--danger);
+    border: none;
+    color: white;
+}
+
+.btn-danger:hover {
+    opacity: 0.85;
+}
+
+.btn-warning {
+    background-color: var(--warning);
+    border: none;
+    color: white;
+}
+
+.btn-warning:hover {
+    opacity: 0.85;
+}
+
+/* ===============================
+   TABELA
+================================= */
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background-color: var(--bg-secondary);
+    border-radius: 8px;
+    overflow: hidden;
+    border: 1px solid var(--border-color);
+}
+
+thead {
+    background-color: #21262d;
+}
+
+th, td {
+    padding: 14px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+
+th {
+    text-transform: uppercase;
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+tbody tr:hover {
+    background-color: #1c2128;
+}
+
+/* Impede sobreposição dentro da célula */
+td {
+    vertical-align: middle;
+}
+
+/* ===============================
+   IMAGENS
+================================= */
+
+img {
+    border-radius: 8px;
+    object-fit: cover;
+}
+
+/* ===============================
+   CARD (DETALHES)
+================================= */
+
+.card {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 700px;
+    margin: auto;
+}
+
+.card img {
+    display: block;
+    margin: 0 auto 20px;
+    border-radius: 50%;
+}
+
+.card p {
+    color: var(--text-muted);
+}
+
+/* ===============================
+   FORMULÁRIO
+================================= */
+
+.form-container {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    padding: 30px;
+    max-width: 500px;
+    margin: auto;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+    margin-top: 15px;
+    font-size: 14px;
+    color: var(--text-muted);
+}
+
+input {
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    border: 1px solid var(--border-color);
+    background-color: #0d1117;
+    color: var(--text-primary);
+    transition: 0.2s;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--green);
+}
+
+/* Corrige botão dentro do form */
+form button {
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* ===============================
+   MENSAGEM
+================================= */
+
+.mensagem {
+    background-color: #23863633;
+    border: 1px solid #23863666;
+    padding: 10px;
+    border-radius: 6px;
+    text-align: center;
+    margin-bottom: 15px;
+}
