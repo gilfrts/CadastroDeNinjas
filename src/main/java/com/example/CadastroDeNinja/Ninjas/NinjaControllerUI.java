@@ -1,7 +1,6 @@
 package com.example.CadastroDeNinja.Ninjas;
 
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
+import com.example.CadastroDeNinja.Missões.MissoesService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +13,10 @@ import java.util.List;
 public class NinjaControllerUI {
 
     private final NinjaService ninjaService;
+    private final MissoesService missoesService; // Variável no plural
 
-    public NinjaControllerUI(NinjaService ninjaService) {
+    public NinjaControllerUI(MissoesService missoesService, NinjaService ninjaService) {
+        this.missoesService = missoesService;
         this.ninjaService = ninjaService;
     }
 
@@ -23,10 +24,9 @@ public class NinjaControllerUI {
     public String listarNinjas(Model model) {
         List<NinjaDTO> listaDeNinjas = ninjaService.listarNinjas();
         model.addAttribute("ninjas", listaDeNinjas);
-        return "listarNinjas"; // Tem que retornar o nome da página que renderiza
+        return "listarNinjas";
     }
 
-    // Deletar ninjas (DELETE)
     @GetMapping ("/deletar/{id}")
     public String deletarNinjaPorId(@PathVariable Long id){
         ninjaService.deletarNinjaPorId(id);
@@ -44,9 +44,12 @@ public class NinjaControllerUI {
         return "listarNinjas";
     }
 
+    // ADICIONAR: Método único e com a lista de missões
     @GetMapping("/adicionar")
     public String mostrarFormularioAdicionarNinja(Model model) {
         model.addAttribute("ninja", new NinjaDTO());
+        // Usando missoesService (plural) conforme declarado no topo
+        model.addAttribute("missoes", missoesService.listarMissoes());
         return "adicionarNinja";
     }
 
@@ -57,21 +60,19 @@ public class NinjaControllerUI {
         return "redirect:/ninjas/ui/listar";
     }
 
-    // MÉTODO 1: Abrir o formulário com os dados preenchidos
+    // EDITAR: Agora também enviando a lista de missões
     @GetMapping("/editar/{id}")
     public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
-        // Busca o ninja atual para preencher os campos do form
         NinjaDTO ninja = ninjaService.listarNinjaPorId(id);
         model.addAttribute("ninja", ninja);
-        return "editarNinja"; // Nome do arquivo HTML que vamos criar/ajustar
+        model.addAttribute("missoes", missoesService.listarMissoes());
+        return "editarNinja";
     }
 
-    // MÉTODO 2: Receber os dados alterados e salvar
     @PostMapping("/editar/{id}")
     public String atualizarNinja(@PathVariable Long id, @ModelAttribute NinjaDTO ninja, RedirectAttributes redirectAttributes) {
         ninjaService.atualizarNinja(id, ninja);
         redirectAttributes.addFlashAttribute("mensagem", "Ninja atualizado com sucesso!");
         return "redirect:/ninjas/ui/listar";
     }
-
 }

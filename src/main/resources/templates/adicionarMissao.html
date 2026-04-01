@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Nova Missão | GitHub Style</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<h1>Cadastrar Nova Missão</h1>
+
+<div class="form-container">
+    <form th:action="@{/missoes/ui/salvar}" th:object="${missao}" method="post">
+
+        <label for="nome">Nome da Missão</label>
+        <input type="text" th:field="*{nome}" id="nome" placeholder="Ex: Proteger a Ponte" required>
+
+        <label for="dificuldade">Dificuldade (Rank)</label>
+        <input type="text" th:field="*{dificuldade}" id="dificuldade" placeholder="Ex: Rank S, A, B..." required>
+
+        <button type="submit" class="btn-primary" style="margin-top: 20px; width: 100%;">Criar Missão</button>
+
+        <a th:href="@{/ninjas/ui/listar}" style="display: block; text-align: center; margin-top: 15px; text-decoration: none; color: var(--text-muted);">
+            Voltar para Ninjas
+        </a>
+    </form>
+</div>
+
+</body>
+</html>

@@ -32,6 +32,15 @@
                placeholder="http://..."
                oninput="document.getElementById('preview').src = this.value">
 
+        <label for="missao">Missão Designada</label>
+        <select th:field="*{missoes.id}" id="missao">
+            <option value="">Selecione uma missão...</option>
+            <option th:each="m : ${missoes}"
+                    th:value="${m.id}"
+                    th:text="${m.nome} + ' (' + ${m.dificuldade} + ')'">
+            </option>
+        </select>
+
         <button type="submit" class="btn-primary">Salvar Alterações</button>
 
         <a th:href="@{/ninjas/ui/listar}" style="display: block; text-align: center; margin-top: 10px; background-color: transparent; border: 1px solid var(--border-color); color: var(--text-primary); padding: 8px; border-radius: 6px; text-decoration: none;">

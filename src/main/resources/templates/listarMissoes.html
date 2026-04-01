@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Lista de Missões</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<h1>Missões da Aldeia</h1>
+
+<div style="text-align: center; margin-bottom: 20px;">
+    <a th:href="@{/missoes/ui/adicionar}" class="btn-primary">Nova Missão</a>
+    <a th:href="@{/ninjas/ui/listar}">Ver Ninjas</a>
+</div>
+
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nome</th>
+        <th>Dificuldade</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="m : ${missoes}">
+        <td th:text="${m.id}"></td>
+        <td th:text="${m.nome}"></td>
+        <td th:text="${m.dificuldade}"></td>
+    </tr>
+    </tbody>
+</table>
+
+</body>
+</html>
