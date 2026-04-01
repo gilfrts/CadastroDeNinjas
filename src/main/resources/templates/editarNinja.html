@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Editar Ninja | GitHub Style</title>
+    <link rel="stylesheet" th:href="@{/css/styles.css}">
+</head>
+<body>
+
+<h1>Editar Cadastro</h1>
+
+<div class="form-container">
+
+    <form th:action="@{/ninjas/ui/editar/{id}(id=${ninja.id})}" th:object="${ninja}" method="post">
+
+        <input type="hidden" th:field="*{id}" />
+
+        <div style="text-align: center;">
+            <img th:src="*{imgUrl}" alt="Foto do Ninja" width="120" height="120"
+                 style="border-radius: 50%; border: 2px solid var(--border-color); margin-bottom: 15px; object-fit: cover;"
+                 id="preview">
+        </div>
+
+        <label for="nome">Nome do Ninja</label>
+        <input type="text" th:field="*{nome}" id="nome" placeholder="Ex: Naruto Uzumaki" required>
+
+        <label for="email">E-mail de Contato</label>
+        <input type="email" th:field="*{email}" id="email" placeholder="ninja@folha.com" required>
+
+        <label for="imgInput">URL da Foto</label>
+        <input type="text" th:field="*{imgUrl}" id="imgInput"
+               placeholder="http://..."
+               oninput="document.getElementById('preview').src = this.value">
+
+        <button type="submit" class="btn-primary">Salvar Alterações</button>
+
+        <a th:href="@{/ninjas/ui/listar}" style="display: block; text-align: center; margin-top: 10px; background-color: transparent; border: 1px solid var(--border-color); color: var(--text-primary); padding: 8px; border-radius: 6px; text-decoration: none;">
+            Cancelar e Voltar
+        </a>
+    </form>
+</div>
+
+<div th:if="${mensagem}" class="mensagem" style="margin-top: 20px; max-width: 500px; margin: 20px auto;">
+    <span th:text="${mensagem}"></span>
+</div>
+
+</body>
+</html>

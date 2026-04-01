@@ -57,4 +57,21 @@ public class NinjaControllerUI {
         return "redirect:/ninjas/ui/listar";
     }
 
+    // MÉTODO 1: Abrir o formulário com os dados preenchidos
+    @GetMapping("/editar/{id}")
+    public String mostrarFormularioEditar(@PathVariable Long id, Model model) {
+        // Busca o ninja atual para preencher os campos do form
+        NinjaDTO ninja = ninjaService.listarNinjaPorId(id);
+        model.addAttribute("ninja", ninja);
+        return "editarNinja"; // Nome do arquivo HTML que vamos criar/ajustar
+    }
+
+    // MÉTODO 2: Receber os dados alterados e salvar
+    @PostMapping("/editar/{id}")
+    public String atualizarNinja(@PathVariable Long id, @ModelAttribute NinjaDTO ninja, RedirectAttributes redirectAttributes) {
+        ninjaService.atualizarNinja(id, ninja);
+        redirectAttributes.addFlashAttribute("mensagem", "Ninja atualizado com sucesso!");
+        return "redirect:/ninjas/ui/listar";
+    }
+
 }
